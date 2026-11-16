@@ -1,0 +1,19 @@
+name: MinhaSuite build
+
+# Build do cliente RustDesk da MinhaSuite: servidor rustdesk.minhasuite.com,
+# chave própria e senha predefinida (vêm do submódulo minhasuite/rustdesk-hbb_common).
+# Sai como pre-release com a tag informada.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag do release"
+        default: "minhasuite-1.5.3"
+
+jobs:
+  build:
+    uses: ./.github/workflows/flutter-build.yml
+    secrets: inherit
+    with:
+      upload-artifact: true
+      upload-tag: ${{ inputs.tag }}
