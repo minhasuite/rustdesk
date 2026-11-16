@@ -10,6 +10,10 @@ on:
         description: "Tag do release"
         default: "minhasuite-1.5.3"
 
+# A org dá token só de leitura; o build publica o release.
+permissions:
+  contents: write
+
 jobs:
   build:
     uses: ./.github/workflows/flutter-build.yml
